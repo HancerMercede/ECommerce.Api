@@ -84,3 +84,5 @@ C:\Users\HANCER MERCEDE\source\repos\Ecommerce.Api\ECommerce.API\obj\Debug\net7.
 C:\Users\HANCER MERCEDE\source\repos\Ecommerce.Api\ECommerce.API\obj\Debug\net7.0\ECommerce.API.pdb
 C:\Users\HANCER MERCEDE\source\repos\Ecommerce.Api\ECommerce.API\obj\Debug\net7.0\ECommerce.API.genruntimeconfig.cache
 C:\Users\HANCER MERCEDE\source\repos\Ecommerce.Api\ECommerce.API\obj\Debug\net7.0\ref\ECommerce.API.dll
+C:\Users\HANCER MERCEDE\source\repos\Ecommerce.Api\ECommerce.API\bin\Debug\net7.0\Mapster.dll
+C:\Users\HANCER MERCEDE\source\repos\Ecommerce.Api\ECommerce.API\bin\Debug\net7.0\Mapster.Core.dll

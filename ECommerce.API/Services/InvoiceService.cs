@@ -1,4 +1,5 @@
 ﻿using ECommerce.API.Helpers;
+using Mapster;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -20,6 +21,7 @@ public class InvoiceService : IInvoiceService
     {
        var dbEntities = await _context.Invoices.ToListAsync();
        var dtos = _mapper.Map<IEnumerable<InvoiceDto>>(dbEntities);
+       
 
        return dtos;
     }
@@ -27,8 +29,8 @@ public class InvoiceService : IInvoiceService
     public async Task<InvoiceDto> Get(string Id)
     {
         var dbEntity = await _context.Invoices.Include(i=>i.InvoiceDetails).FirstOrDefaultAsync(i => i.InvoiceId == Guid.Parse(Id));
-        var dto = _mapper.Map<InvoiceDto>(dbEntity);
-
+         var dto = _mapper.Map<InvoiceDto>(dbEntity);
+        //var dto = dbEntity.Adapt<InvoiceDto>();
         return dto;
     }
 

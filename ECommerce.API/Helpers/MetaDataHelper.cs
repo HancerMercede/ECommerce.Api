@@ -10,7 +10,6 @@ namespace ECommerce.API.Helpers
         public static int CurrentPage { get; set; }
         public static int TotalPages { get; set; }
 
-
         public static void InsertingPaginationParams(int Total, int RecordsPerPage, int Page, int TotalPage)
         {
             TotalCount = Total;

@@ -22,6 +22,8 @@ namespace ECommerce.API.Config
             CreateMap<InvoiceDetailDto, InvoiceDetail>().ReverseMap();
             CreateMap<InvoiceDetailCreateDto, InvoiceDetail>();
 
+            CreateMap<NCF, NCFDto>().ReverseMap();
+            CreateMap<NCFDetailDto, NCF_Info>().ReverseMap();
         }
     }
 }

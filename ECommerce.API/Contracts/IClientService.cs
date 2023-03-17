@@ -1,9 +1,4 @@
-﻿
-
-using ECommerce.API.ConsultasArbitrarias;
-using ECommerce.API.Helpers;
-
-namespace ECommerce.API.Contracts;
+﻿namespace ECommerce.API.Contracts;
 
 public interface IClientService
 {

@@ -34,5 +34,6 @@ namespace ECommerce.API.Persistance
         public DbSet<Client> Clients { get; set; }
         public DbSet<Factor> Factors  { get; set; }
         public DbSet<NCF> NCFs { get; set; }
+        public DbSet<NCF_Info> NCF_Infos { get; set; }
     }   
 }

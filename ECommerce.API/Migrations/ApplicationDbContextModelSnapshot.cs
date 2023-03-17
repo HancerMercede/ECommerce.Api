@@ -218,6 +218,50 @@ namespace ECommerce.API.Migrations
                     b.ToTable("InvoiceDetail", (string)null);
                 });
 
+            modelBuilder.Entity("ECommerce.API.Entities.NCF", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NCF", (string)null);
+                });
+
+            modelBuilder.Entity("ECommerce.API.Entities.NCF_Info", b =>
+                {
+                    b.Property<string>("NCF_Serie")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("NCF_Type")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("Secuence")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<string>("Active")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NCFId")
+                        .HasColumnType("int");
+
+                    b.HasKey("NCF_Serie", "NCF_Type", "Secuence");
+
+                    b.HasIndex("NCFId");
+
+                    b.ToTable("NCF_Details", (string)null);
+                });
+
             modelBuilder.Entity("ECommerce.API.Entities.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -246,29 +290,6 @@ namespace ECommerce.API.Migrations
                     b.HasIndex("FactorId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ECommerce.API.Helpers.NCF", b =>
-                {
-                    b.Property<string>("Serie")
-                        .HasMaxLength(1)
-                        .HasColumnType("char");
-
-                    b.Property<string>("Tcomprobante")
-                        .HasMaxLength(2)
-                        .HasColumnType("char");
-
-                    b.Property<string>("Secuence")
-                        .HasMaxLength(8)
-                        .HasColumnType("char");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Serie", "Tcomprobante", "Secuence");
-
-                    b.ToTable("NCFs");
                 });
 
             modelBuilder.Entity("ECommerce.API.Entities.Invoice", b =>
@@ -301,6 +322,15 @@ namespace ECommerce.API.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ECommerce.API.Entities.NCF_Info", b =>
+                {
+                    b.HasOne("ECommerce.API.Entities.NCF", "NCF")
+                        .WithMany("NCF_Infos")
+                        .HasForeignKey("NCFId");
+
+                    b.Navigation("NCF");
+                });
+
             modelBuilder.Entity("ECommerce.API.Entities.Product", b =>
                 {
                     b.HasOne("ECommerce.API.Entities.Factor", "Factor")
@@ -315,6 +345,11 @@ namespace ECommerce.API.Migrations
             modelBuilder.Entity("ECommerce.API.Entities.Invoice", b =>
                 {
                     b.Navigation("InvoiceDetails");
+                });
+
+            modelBuilder.Entity("ECommerce.API.Entities.NCF", b =>
+                {
+                    b.Navigation("NCF_Infos");
                 });
 #pragma warning restore 612, 618
         }

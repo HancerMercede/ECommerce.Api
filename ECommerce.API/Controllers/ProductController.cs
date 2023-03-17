@@ -69,7 +69,7 @@ namespace ECommerce.API.Controllers
             if(string.IsNullOrWhiteSpace(Id))
                 return BadRequest();
 
-           await _service.Delete(Id);
+            await _service.Delete(Id);
             return NoContent();
         }
     }

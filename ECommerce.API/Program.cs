@@ -11,7 +11,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IClientService, ClientService>();
 
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
-
+builder.Services.AddScoped<INCF, NCFService>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

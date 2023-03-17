@@ -1,4 +1,5 @@
 ﻿using ECommerce.API.Helpers;
+using Mapster;
 using System.Collections.Concurrent;
 
 namespace ECommerce.API.Services;
@@ -43,8 +44,9 @@ public class ProductService : IProductService
             paginationDto.PageSize);
 
         MetaDataHelper.InsertingPaginationParams(records.TotalCount, records.PageSize, records.CurrentPage, records.TotalPages);
-        
-        return await Task.FromResult(_mapper.Map<IEnumerable<ProductDto>>(records));
+
+        //return await Task.FromResult(_mapper.Map<IEnumerable<ProductDto>>(records));
+        return await Task.FromResult(records.Adapt<IEnumerable<ProductDto>>());
     }
 
     public async Task<ProductDto> GetById(string Id)
