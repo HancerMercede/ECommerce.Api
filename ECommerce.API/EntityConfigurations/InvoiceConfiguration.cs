@@ -11,6 +11,7 @@ namespace ECommerce.API.EntityConfigurations
             builder.ToTable(nameof(Invoice));
             builder.HasKey(i => i.InvoiceId);
             builder.Property(i => i.CreationDate).HasConversion<DateTime>().HasDefaultValueSql("GETDATE()");
+            builder.Property(i => i.NCFSecuence).HasMaxLength(11);
         }
     }
 }

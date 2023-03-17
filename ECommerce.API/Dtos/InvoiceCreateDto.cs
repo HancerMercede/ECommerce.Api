@@ -12,4 +12,8 @@ public class InvoiceCreateDto
     public decimal Iva { get; set; }
     public decimal SubTotal { get; set; }
     public decimal Total { get; set; }
+
+    public string NCFSerie { get; set; }
+    public string NCFType { get; set; }
+    public string Secuence { get; set; }
 }

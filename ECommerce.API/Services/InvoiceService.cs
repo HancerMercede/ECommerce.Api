@@ -44,7 +44,12 @@ public class InvoiceService : IInvoiceService
 
         var dbEntity = _mapper.Map<Invoice>(db);
 
+        dbEntity.NCFSecuence = string.Concat(model.NCFSerie, model.NCFType, model.Secuence);
         _context.Add(dbEntity);
+        _context.Database.ExecuteSql($@"UPDATE NCF_Details SET Active = 'N' 
+                                        WHERE NCF_Serie = {model.NCFSerie} 
+                                           AND NCF_Type = {model.NCFType} 
+                                           AND Secuence = {model.Secuence}");
         await _context.SaveChangesAsync();
 
         var dto = _mapper.Map<InvoiceDto>(dbEntity);
